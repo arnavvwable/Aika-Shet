@@ -1,4 +1,6 @@
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
@@ -29,5 +31,8 @@ setupSockets(io);
 
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
+  if (process.env.SUPABASE_URL) console.log('SUPABASE_URL: LOADED');
+  if (process.env.SUPABASE_SERVICE_KEY) console.log('SUPABASE_SERVICE_KEY: LOADED');
+  console.log('WALKIE SERVER ONLINE');
   console.log(`Backend server running on port ${PORT}`);
 });
