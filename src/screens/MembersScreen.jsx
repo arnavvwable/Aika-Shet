@@ -53,6 +53,18 @@ export default function MembersScreen({ channel, user, onNavigate, activeNav }) 
     <Screen>
       <StatusBar left={`USER:${user?.name?.toUpperCase() || 'UNKNOWN'}`} center={`CH:${channel?.name?.split(' ')[1] || channel?.name}`} right="SIG:●●●" />
       <ScreenBody>
+        <button 
+          onClick={() => onNavigate('home')}
+          style={{
+            background: 'transparent', border: '1px solid #3d2a0a', borderRadius: 'var(--radius)',
+            color: 'var(--amber-dim)', padding: '6px 10px', fontSize: 9, fontFamily: 'var(--font-mono)',
+            letterSpacing: '1px', cursor: 'pointer', marginBottom: 12, width: '100%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
+          }}
+        >
+          <span style={{ fontSize: 15, lineHeight: 0 }}>‹</span> LEAVE CHANNEL
+        </button>
+
         <PageTitle title="CREW" sub="CHANNEL MEMBERS" />
         
         <BtnOutline onClick={handleInvite} style={{ marginBottom: 14 }}>

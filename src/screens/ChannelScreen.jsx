@@ -73,6 +73,19 @@ export default function ChannelScreen({ channel, user, onNavigate, activeNav }) 
         {Object.entries(remoteStreams || {}).map(([socketId, stream]) => (
           <AudioStreamPlayer key={socketId} stream={stream} />
         ))}
+
+        <button 
+          onClick={() => onNavigate('home')}
+          style={{
+            background: 'transparent', border: '1px solid #3d2a0a', borderRadius: 'var(--radius)',
+            color: 'var(--amber-dim)', padding: '6px 10px', fontSize: 9, fontFamily: 'var(--font-mono)',
+            letterSpacing: '1px', cursor: 'pointer', marginBottom: 12, width: '100%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
+          }}
+        >
+          <span style={{ fontSize: 15, lineHeight: 0 }}>‹</span> LEAVE CHANNEL
+        </button>
+
         <div style={{
           background: 'var(--bg0)', border: '1px solid #2a1d08',
           borderRadius: 6, padding: '8px 12px', marginBottom: 10,
