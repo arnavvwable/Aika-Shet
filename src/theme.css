@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@400;700&family=Mukta:wght@400;700&display=swap');
+
+:root {
+  --bg0: #0e0b07;
+  --bg1: #161009;
+  --bg2: #1e160a;
+  --bg3: #261c0e;
+  --amber: #f59e0b;
+  --amber2: #fbbf24;
+  --amber3: #fde68a;
+  --amber4: #78350f;
+  --amber-dim: #92400e;
+  --amber-glow: rgba(245, 158, 11, 0.18);
+  --silver: #94a3b8;
+  --silver-dim: #475569;
+  --txt: #fde68a;
+  --txt-dim: #92400e;
+  --txt-mid: #d97706;
+  --font-display: 'Khand', sans-serif;
+  --font-mono: 'Mukta', sans-serif;
+  --radius: 5px;
+  --radius-lg: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg0);
+  color: var(--txt);
+  font-family: var(--font-mono);
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg1); }
+::-webkit-scrollbar-thumb { background: var(--amber4); border-radius: 2px; }
