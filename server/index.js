@@ -9,7 +9,12 @@ const setupSockets = require('./socket');
 const { rooms } = require('./rooms');
 
 const app = express();
-app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://walkie-app.vercel.app'
+  ]
+}));
 app.use(express.json());
 
 app.get('/health', (req, res) => res.json({ status: 'ONLINE' }));
@@ -22,8 +27,14 @@ if (RENDER_URL) {
 }
 
 const server = http.createServer(app);
-const io = new Server(server, { 
-  cors: { origin: '*' },
+const io = new Server(server, {
+  cors: {
+    origin: [
+      'http://localhost:5173',
+      'https://walkie-app.vercel.app'
+    ],
+    methods: ['GET', 'POST']
+  },
   maxHttpBufferSize: 1e7
 });
 
