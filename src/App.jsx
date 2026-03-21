@@ -4,6 +4,7 @@ import LoginScreen   from './screens/LoginScreen';
 import HomeScreen    from './screens/HomeScreen';
 import ChannelScreen from './screens/ChannelScreen';
 import MembersScreen from './screens/MembersScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 import Toast from './components/Toast';
 import { supabase } from './lib/supabase';
@@ -59,7 +60,18 @@ export default function App() {
     } else if (dest === 'home') {
       setNav('home');
       setScreen('home');
+    } else if (dest === 'profile') {
+      setNav('profile');
+      setScreen('profile');
     }
+  };
+
+  const handleSignOut = () => {
+    setUser(null);
+    setSession(null);
+    setChannel(null);
+    setNav('home');
+    setScreen('login');
   };
 
   return (
@@ -94,6 +106,14 @@ export default function App() {
           user={user}
           onNavigate={handleNavigate}
           activeNav={nav}
+        />
+      )}
+      {screen === 'profile' && user && (
+        <ProfileScreen
+          user={user}
+          onNavigate={handleNavigate}
+          activeNav={nav}
+          onSignOut={handleSignOut}
         />
       )}
       <Toast />

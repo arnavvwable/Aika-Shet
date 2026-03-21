@@ -263,6 +263,7 @@ export default function HomeScreen({ user, onSelectChannel, onNavigate, activeNa
         { icon: '⌂', label: 'HOME',   active: activeNav === 'home',    onClick: () => onNavigate('home') },
         { icon: '◉', label: 'TALK',   active: activeNav === 'talk',    onClick: () => onNavigate('talk') },
         { icon: '◈', label: 'CREW',   active: activeNav === 'crew',    onClick: () => onNavigate('crew') },
+        { icon: '◎', label: 'PROFILE', active: activeNav === 'profile', onClick: () => onNavigate('profile') },
       ]} />
     </Screen>
   );

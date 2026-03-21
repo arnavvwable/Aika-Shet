@@ -170,6 +170,7 @@ export default function ChannelScreen({ channel, user, onNavigate, activeNav }) 
         { icon: '⌂', label: 'HOME', active: activeNav === 'home', onClick: () => onNavigate('home') },
         { icon: '◉', label: 'TALK', active: activeNav === 'talk', onClick: () => onNavigate('talk') },
         { icon: '◈', label: 'CREW', active: activeNav === 'crew', onClick: () => onNavigate('crew') },
+        { icon: '◎', label: 'PROFILE', active: activeNav === 'profile', onClick: () => onNavigate('profile') },
       ]} />
     </Screen>
   );
