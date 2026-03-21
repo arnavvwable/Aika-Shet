@@ -12,7 +12,8 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://walkie-app.vercel.app'
+    'https://walkie-app.vercel.app',
+    'https://walkie-app-eta.vercel.app'
   ]
 }));
 app.use(express.json());
@@ -31,7 +32,8 @@ const io = new Server(server, {
   cors: {
     origin: [
       'http://localhost:5173',
-      'https://walkie-app.vercel.app'
+      'https://walkie-app.vercel.app',
+      'https://walkie-app-eta.vercel.app'
     ],
     methods: ['GET', 'POST']
   },
