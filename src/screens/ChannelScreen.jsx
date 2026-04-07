@@ -7,6 +7,10 @@ const AudioStreamPlayer = ({ stream }) => {
   useEffect(() => {
     if (audioRef.current && stream) {
       audioRef.current.srcObject = stream;
+      // Mobile browsers require explicit .play() after user gesture
+      audioRef.current.play().catch(err => {
+        console.warn('[Audio] Autoplay blocked, will retry on next interaction:', err);
+      });
     }
   }, [stream]);
   return <audio ref={audioRef} autoPlay playsInline style={{ display: 'none' }} />;
@@ -35,12 +39,13 @@ const VUMeter = ({ active }) => {
 export default function ChannelScreen({ channel, user, onNavigate, activeNav }) {
   const [transmitting, setTransmitting] = useState(false);
   const [speaker, setSpeaker] = useState(null);
-  const [roomUsers, setRoomUsers] = useState([]);
+  const [roomUsers, setRoomUsers] = useState({});
   
   const { startPTT, stopPTT, remoteStreams } = useSocket({
     roomCode: channel?.id,
     userId: user?.id,
     userName: user?.user_metadata?.username || user?.email || user?.name,
+    callsign: user?.callsign || user?.name,
     onUsersUpdate: setRoomUsers,
     onPTTChange: (name, talking) => setSpeaker(talking ? name : null)
   });
@@ -60,7 +65,7 @@ export default function ChannelScreen({ channel, user, onNavigate, activeNav }) 
 
   const ch = channel || { name: 'UNKNOWN', code: '??' };
   const receiving = !!speaker;
-  const onlineCount = roomUsers.length || 1;
+  const onlineCount = Object.keys(roomUsers).length || 1;
 
   return (
     <Screen>
